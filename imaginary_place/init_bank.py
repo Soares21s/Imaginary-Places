@@ -1,7 +1,7 @@
 import sqlite3
 
 def connect():
-    conn = sqlite3.connect('bank.db')
+    conn = sqlite3.connect('imaginary_place/bank.db')
     
     return conn
 
