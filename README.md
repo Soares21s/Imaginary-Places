@@ -6,8 +6,11 @@ Esse é o objetivo do imaginary place, ser um local onde você pode guardar idei
 
 # 💻 Tecnologias Utilizadas 💻
 ⇒ Python 3 
+
 ⇒ Flask
+
 ⇒ HTML
+
 ⇒ SQLite
 
 ---
