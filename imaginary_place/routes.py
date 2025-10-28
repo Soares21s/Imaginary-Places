@@ -12,12 +12,9 @@ def homepage():
     cursor = conn.cursor()
     
     cursor.execute("SELECT * FROM places")
-    
     data = cursor.fetchall()
     
-
-    
-    
+    #Ordem aleatória dos itens no banco de dados
     random.shuffle(data)
     
     return render_template('homepage.html', data=data)
@@ -37,7 +34,7 @@ def sending():
     
     try: 
         cursor.execute("INSERT INTO places (author,description, text) VALUES (?,?,?)", (author, description, history))
-        world_id = cursor.lastrowid
+        world_id = cursor.lastrowid #Apresenta o id do item arrecem adicionado
         conn.commit()
         
         return redirect(url_for('worlds', world_id=world_id))
@@ -57,6 +54,7 @@ def worlds(world_id):
     
     world = conn.execute("SELECT * FROM places WHERE id = ? ", (world_id,)).fetchone()
     
+    #Verrifica se o id corresponde com o banco de dados
     if world is None: 
         return render_template('404.html'), 404
     return render_template('worlds_template.html', world=world)

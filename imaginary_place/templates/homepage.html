@@ -9,10 +9,11 @@
     <h1>Imaginary Places</h1>
 
     <h2>Add a new place.</h2>
+    <p>If you wish to post anonymously, just type "anonymous" in the author field.</p>
     <a href="/write"><button>Write</button></a>
 
     {% for text in data %}
-        <a href="/world/{{ text[0] }}"><p>{{ text[2] }} - {{ text[1] }}</p></a>     
+        <a href="/world/{{ text[0] }}"><p>{{ text[2] }} - By {{ text[1] }}</p></a>     
     {% endfor %}
 </body>
 </html>
