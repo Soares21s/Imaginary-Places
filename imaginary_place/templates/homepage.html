@@ -12,7 +12,7 @@
     <a href="/write"><button>Write</button></a>
 
     {% for text in data %}
-        <p>{{ text }}</p>
+        <a href="/world/{{ text[0] }}"><p>{{ text[2] }} - {{ text[1] }}</p></a>     
     {% endfor %}
 </body>
 </html>

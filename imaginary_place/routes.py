@@ -15,6 +15,9 @@ def homepage():
     
     data = cursor.fetchall()
     
+
+    
+    
     random.shuffle(data)
     
     return render_template('homepage.html', data=data)
@@ -40,7 +43,7 @@ def sending():
         return redirect(url_for('worlds', world_id=world_id))
     
     except sqlite3.Error as e:
-        print(f"Erro ao inserir: {e}")  # Depuração
+        print(f"Erro ao inserir: {e}") 
         return "Erro ao enviar dados", 500
     finally:
         conn.close()
@@ -55,6 +58,6 @@ def worlds(world_id):
     world = conn.execute("SELECT * FROM places WHERE id = ? ", (world_id,)).fetchone()
     
     if world is None: 
-        return "Mundo não encontrado", 404
+        return render_template('404.html'), 404
     return render_template('worlds_template.html', world=world)
         
