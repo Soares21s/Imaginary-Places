@@ -32,7 +32,29 @@ def sending():
     description = request.form['description']
     history = request.form['history']
     
-    cursor.execute("INSERT INTO places (author,description, text) VALUES (?,?,?)", (author, description, history))
-    conn.commit()
+    try: 
+        cursor.execute("INSERT INTO places (author,description, text) VALUES (?,?,?)", (author, description, history))
+        world_id = cursor.lastrowid
+        conn.commit()
+        
+        return redirect(url_for('worlds', world_id=world_id))
     
-    return redirect(url_for('homepage'))
+    except sqlite3.Error as e:
+        print(f"Erro ao inserir: {e}")  # Depuração
+        return "Erro ao enviar dados", 500
+    finally:
+        conn.close()
+    
+    return redirect(url_for('write'))
+
+@app.route('/world/<int:world_id>')
+def worlds(world_id):
+    conn = init_bank.connect()
+    cursor = conn.cursor()
+    
+    world = conn.execute("SELECT * FROM places WHERE id = ? ", (world_id,)).fetchone()
+    
+    if world is None: 
+        return "Mundo não encontrado", 404
+    return render_template('worlds_template.html', world=world)
+        
