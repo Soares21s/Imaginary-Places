@@ -18,7 +18,7 @@ Esse é o objetivo do imaginary place, ser um local onde você pode guardar idei
 # ✨ Futuras Melhorias ✨
 ⇒ Sistema de cadastro
 
-Será implementado um sistema de cadastro para usuários terem a opção de salvar suas ideias preferidas e ter sua própria organização de suas ideias.
+Será implementado um sistema de cadastro para usuários terem a opção de salvar suas ideias preferidas e ter sua própria organização.
 
 ⇒ Sessão de comentários
 
